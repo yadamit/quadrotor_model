@@ -1,0 +1,2 @@
+model_checkpoint_path: "/data1/kranti/pratyush/generative/s_omega_2/output_dir/models/model.ckpt"
+all_model_checkpoint_paths: "/data1/kranti/pratyush/generative/s_omega_2/output_dir/models/model.ckpt"
