@@ -5,10 +5,10 @@ import numpy as np
 import math
 import matplotlib.pyplot as plt
 
-output_dir 		= "/data1/kranti/pratyush/generative/s_omega_2/output_dir/"
-s_dir 			= "/data1/kranti/pratyush/generative/s_omega_2/data_high_rates/states/"
-control_dir 	= "/data1/kranti/pratyush/generative/s_omega_2/data_high_rates/controls/"
-alpha_dir 		= "/data1/kranti/pratyush/generative/s_omega_2/data_high_rates/nn2/"
+output_dir 		= "/data1/kranti/pratyush/quadrotor_model/s_omega/output_dir/"
+s_dir 			= "/data1/kranti/pratyush/quadrotor_model/s_omega/data_high_rates/states/"
+control_dir 	= "/data1/kranti/pratyush/quadrotor_model/s_omega/data_high_rates/controls/"
+alpha_dir 		= "/data1/kranti/pratyush/quadrotor_model/s_omega/data_high_rates/nn2/"
 
 
 s_yaw    = np.load(s_dir 		+ 's_yaw.npy')
@@ -164,84 +164,84 @@ s_circle = np.concatenate((s_circle[:,0:6], s_circle[:,12:18]),axis = 1)
 
 yaw    = np.concatenate((s_yaw[:,3:12], u_yaw), axis = 1 ) #controls
 yaw    = yaw[:-1,:] # decrease_state 
-yaw_gt = alpha_yaw[1:,0:2] #decrease_acc
+yaw_gt = alpha_yaw[1:,0:3]#decrease_acc
 
 
 x_sin_y    = np.concatenate((s_x_sin_y[:,3:12], u_x_sin_y), axis = 1 ) #controls
 x_sin_y    = x_sin_y[:-1,:] # decrease_state
-x_sin_y_gt = alpha_x_sin_y[1:,0:2] #decrease_acc
+x_sin_y_gt = alpha_x_sin_y[1:,0:3]#decrease_acc
 
 x_cos_y    = np.concatenate((s_x_cos_y[:,3:12], u_x_cos_y), axis = 1 ) #controls
 x_cos_y    = x_cos_y[:-1,:] # decrease_state
-x_cos_y_gt = alpha_x_cos_y[1:,0:2] #decrease_acc
+x_cos_y_gt = alpha_x_cos_y[1:,0:3]#decrease_acc
 
 
 x_sin_z    = np.concatenate((s_x_sin_z[:,3:12], u_x_sin_z), axis = 1 ) #controls
 x_sin_z    = x_sin_z[:-1,:] # decrease_state 
-x_sin_z_gt = alpha_x_sin_z[1:,0:2] #decrease_acc
+x_sin_z_gt = alpha_x_sin_z[1:,0:3]#decrease_acc
 
 
 x_cos_z    = np.concatenate((s_x_cos_z[:,3:12], u_x_cos_z), axis = 1 ) #controls
 x_cos_z    = x_cos_z[:-1,:] # decrease_state 
-x_cos_z_gt = alpha_x_cos_z[1:,0:2] #decrease_acc
+x_cos_z_gt = alpha_x_cos_z[1:,0:3]#decrease_acc
 
 
 x_cos_sin_y    = np.concatenate((s_x_cos_sin_y[:,3:12], u_x_cos_sin_y), axis = 1 ) #controls
 x_cos_sin_y    = x_cos_sin_y[:-1,:] # decrease_state 
-x_cos_sin_y_gt = alpha_x_cos_sin_y[1:,0:2] #decrease_acc
+x_cos_sin_y_gt = alpha_x_cos_sin_y[1:,0:3]#decrease_acc
 
 
 sin_x_y    = np.concatenate((s_sin_x_y[:,3:12], u_sin_x_y), axis = 1 ) #controls
 sin_x_y    = sin_x_y[:-1,:] # decrease_state 
-sin_x_y_gt = alpha_sin_x_y[1:,0:2] #decrease_acc
+sin_x_y_gt = alpha_sin_x_y[1:,0:3]#decrease_acc
 
 
 cos_x_y    = np.concatenate((s_cos_x_y[:,3:12], u_cos_x_y), axis = 1 ) #controls
 cos_x_y    = cos_x_y[:-1,:] # decrease_state 
-cos_x_y_gt = alpha_cos_x_y[1:,0:2] #decrease_acc
+cos_x_y_gt = alpha_cos_x_y[1:,0:3]#decrease_acc
 
 
 cos_sin_x_y    = np.concatenate((s_cos_sin_x_y[:,3:12], u_cos_sin_x_y), axis = 1 ) #controls
 cos_sin_x_y    = cos_sin_x_y[:-1,:] # decrease_state 
-cos_sin_x_y_gt = alpha_cos_sin_x_y[1:,0:2] #decrease_acc
+cos_sin_x_y_gt = alpha_cos_sin_x_y[1:,0:3]#decrease_acc
 
 
 y_sin_z    = np.concatenate((s_y_sin_z[:,3:12], u_y_sin_z), axis = 1 ) #controls
 y_sin_z    = y_sin_z[:-1,:] # decrease_state 
-y_sin_z_gt = alpha_y_sin_z[1:,0:2] #decrease_acc
+y_sin_z_gt = alpha_y_sin_z[1:,0:3]#decrease_acc
 
 y_cos_z    = np.concatenate((s_y_cos_z[:,3:12], u_y_cos_z), axis = 1 ) #controls
 y_cos_z    = y_cos_z[:-1,:] # decrease_state 
-y_cos_z_gt = alpha_y_cos_z[1:,0:2] #decrease_acc
+y_cos_z_gt = alpha_y_cos_z[1:,0:3]#decrease_acc
 
 x_rand_y    = np.concatenate((s_x_rand_y[:,3:12], u_x_rand_y), axis = 1 ) #controls
 x_rand_y    = x_rand_y[:-1,:] # decrease_state 
-x_rand_y_gt = alpha_x_rand_y[1:,0:2] #decrease_acc
+x_rand_y_gt = alpha_x_rand_y[1:,0:3]#decrease_acc
 
 
 rand_x_y    = np.concatenate((s_rand_x_y[:,3:12], u_rand_x_y), axis = 1 ) #controls
 rand_x_y    = rand_x_y[:-1,:] # decrease_state 
-rand_x_y_gt = alpha_rand_x_y[1:,0:2] #decrease_acc
+rand_x_y_gt = alpha_rand_x_y[1:,0:3]#decrease_acc
 
 
 rand_x_neg_y    = np.concatenate((s_rand_x_neg_y[:,3:12], u_rand_x_neg_y), axis = 1 ) #controls
 rand_x_neg_y    = rand_x_neg_y[:-1,:] # decrease_state 
-rand_x_neg_y_gt = alpha_rand_x_neg_y[1:,0:2] #decrease_acc
+rand_x_neg_y_gt = alpha_rand_x_neg_y[1:,0:3]#decrease_acc
 
 
 rand_neg_x_y    = np.concatenate((s_rand_neg_x_y[:,3:12], u_rand_neg_x_y), axis = 1 ) #controls
 rand_neg_x_y    = rand_neg_x_y[:-1,:] # decrease_state 
-rand_neg_x_y_gt = alpha_rand_neg_x_y[1:,0:2] #decrease_acc
+rand_neg_x_y_gt = alpha_rand_neg_x_y[1:,0:3]#decrease_acc
 
 
 test_traj_1    = np.concatenate((s_test_traj_1[:,3:12], u_test_traj_1), axis = 1 ) #controls
 test_traj_1    = test_traj_1[:-1,:] # decrease_state 
-test_traj_1_gt = alpha_test_traj_1[1:,0:2] #decrease_acc
+test_traj_1_gt = alpha_test_traj_1[1:,0:3]#decrease_acc
 
 
 circle    = np.concatenate((s_circle[:,3:12], u_circle), axis = 1 ) #controls
 circle    = circle[:-1,:] # decrease_state 
-circle_gt = alpha_circle[1:,0:2] #decrease_acc
+circle_gt = alpha_circle[1:,0:3]#decrease_acc
 
 
 
@@ -438,7 +438,7 @@ LAYER_5 = 100 # layer_nodes
 NUM_EPOCHS = 5000
 
 INPUT_DIM  = 13
-OUTPUT_DIM = 2
+OUTPUT_DIM = 3
 
 X = tf.placeholder(tf.float32, shape=[None, INPUT_DIM])
 Y = tf.placeholder(tf.float32, shape=[None, OUTPUT_DIM])
@@ -499,8 +499,7 @@ cost = tf.reduce_sum(tf.pow(pred_y - Y, 2))/(2*BATCH_SIZE)
 
 
 # optimizer = tf.train.MomentumOptimizer(learning_rate=1e-2, momentum=MOMENTUM).minimize(cost)
-# optimizer = tf.train.AdamOptimizer(learning_rate=1e-2).minimize(cost)
-optimizer = tf.train.GradientDescentOptimizer(learning_rate=1e-2).minimize(cost)
+optimizer = tf.train.AdamOptimizer().minimize(cost)
 
 init = tf.global_variables_initializer()
 

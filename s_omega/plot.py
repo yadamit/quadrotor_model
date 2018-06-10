@@ -8,8 +8,8 @@ parser.add_argument('file_name', help='file_name')
 args = parser.parse_args()
 file_name = args.file_name
 
-data_dir= "/data1/kranti/pratyush/generative/s_omega_2/data_high_rates/nn2/"
-data_dir= "/data1/kranti/pratyush/generative/s_omega_2/data_high_rates/nn2/"
+data_dir= "/data1/kranti/pratyush/quadrotor_model/s_omega/data_high_rates/nn2/"
+data_dir= "/data1/kranti/pratyush/quadrotor_model/s_omega/data_high_rates/nn2/"
 
 
 predictions = np.load('pred.npy')
@@ -17,7 +17,7 @@ alpha 	 = np.load(data_dir + 'nn2_'+file_name+'_grd_truth.npy')
 
 size = alpha.shape[0]
 
-acc_meas = alpha[1:,0:2]
+acc_meas = alpha[1:,0:3]
 
 
 grd_truth = acc_meas
@@ -103,26 +103,25 @@ for i in range(0,r):
 	pred_1.append((predictions[i,1]/(delta_t)))
 	gt_1.append(grd_truth[i,1])
 
-	# pred_2.append((predictions[i,2]/(delta_t)))
-	# gt_2.append(grd_truth[i,2])
+	pred_2.append((predictions[i,2]/(delta_t)))
+	gt_2.append(grd_truth[i,2])
 
 	
 fig,ax = plt.subplots(nrows=3,ncols=1)
 
 # ax[0].set_ylim(-1,1)
-ax[0].plot(pred_0[0:],'r',label='predictions')
 ax[0].plot(gt_0[0:],'b',label='grnd_truth')
+ax[0].plot(pred_0[0:],'r',label='predictions')
 
 
 # ax[1].set_ylim(-0.6,0.6)
-ax[1].plot(gt_1[0:],'b',label='grnd_truth')
 ax[1].plot(pred_1[0:],'r',label='predictions')
+ax[1].plot(gt_1[0:],'b',label='grnd_truth')
 
 
 # # ax[2].set_ylim(-0.6,0.6)
-# ax[2].plot(t,gt_2,'b',label='grnd_truth')
-# ax[2].plot(t,pred_2,'r',label='predictions')
-
+ax[2].plot(t,gt_2,'b',label='grnd_truth')
+ax[2].plot(t,pred_2,'r',label='predictions')
 
 
 

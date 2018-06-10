@@ -11,10 +11,10 @@ args = parser.parse_args()
 
 file_name = args.file_name
 
-output_dir 		= "/data1/kranti/pratyush/generative/s_omega_2/output_dir/"
-state_dir	 	= "/data1/kranti/pratyush/generative/s_omega_2/data_high_rates/states/"
-control_dir 	= "/data1/kranti/pratyush/generative/s_omega_2/data_high_rates/controls/"
-alpha_dir 		= "/data1/kranti/pratyush/generative/s_omega_2/data_high_rates/nn2/"
+output_dir 		= "/data1/kranti/pratyush/quadrotor_model/s_omega/output_dir/"
+state_dir	 	= "/data1/kranti/pratyush/quadrotor_model/s_omega/data_high_rates/states/"
+control_dir 	= "/data1/kranti/pratyush/quadrotor_model/s_omega/data_high_rates/controls/"
+alpha_dir 		= "/data1/kranti/pratyush/quadrotor_model/s_omega/data_high_rates/nn2/"
 
 state   = np.load(state_dir 	+ 's_'+file_name+'.npy')
 control = np.load(control_dir   + 'u_'+file_name+'.npy')
@@ -26,7 +26,7 @@ state = np.concatenate((state[:,0:6], state[:,12:18]),axis=1)
 Xtr    = np.concatenate((state[:,3:12], control[:,0:4]), axis = 1 ) #controls
 Xtr    = Xtr[:-1,:] # decrease_state 
 
-Ytr    = alpha[1:,0:2]
+Ytr    = alpha[1:,0:3]
 # Ytr = np.concatenate((Ytr[:,0:2]  , Ytr[:,2:3]),axis=1)
 
 
@@ -94,7 +94,7 @@ LAYER_2 = 100
 
 
 INPUT_DIM = 13
-OUTPUT_DIM = 2
+OUTPUT_DIM = 3
 
 
 X = tf.placeholder(tf.float32, shape=[None, INPUT_DIM])
@@ -150,4 +150,4 @@ with tf.Session() as sess:
 	predictions, c = sess.run([pred_y,cost],feed_dict={X: Xtr ,Y: Ytr})
 	print("Cost = ", '{:.5f}'.format(c))
 	print("shape = ",predictions.shape)
-	np.save('pred.npy',predictions)
+	np.save('predictions/'+file_name+'_prediction.npy',predictions)
