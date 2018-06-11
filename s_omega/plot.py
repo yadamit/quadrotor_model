@@ -8,11 +8,12 @@ parser.add_argument('file_name', help='file_name')
 args = parser.parse_args()
 file_name = args.file_name
 
-data_dir= "/data1/kranti/pratyush/quadrotor_model/s_omega/data_high_rates/nn2/"
-data_dir= "/data1/kranti/pratyush/quadrotor_model/s_omega/data_high_rates/nn2/"
+data_dir= "/data1/kranti/pratyush/quadrotor_model/data/nn2/"
+data_dir= "/data1/kranti/pratyush/quadrotor_model/data/nn2/"
+pred_dir = "/data1/kranti/pratyush/quadrotor_model/s_omega/predictions/"
 
 
-predictions = np.load('pred.npy')
+predictions = np.load(pred_dir +file_name+'_prediction.npy')
 alpha 	 = np.load(data_dir + 'nn2_'+file_name+'_grd_truth.npy')
 
 size = alpha.shape[0]
@@ -110,8 +111,8 @@ for i in range(0,r):
 fig,ax = plt.subplots(nrows=3,ncols=1)
 
 # ax[0].set_ylim(-1,1)
-ax[0].plot(gt_0[0:],'b',label='grnd_truth')
 ax[0].plot(pred_0[0:],'r',label='predictions')
+ax[0].plot(gt_0[0:],'b',label='grnd_truth')
 
 
 # ax[1].set_ylim(-0.6,0.6)
@@ -120,8 +121,8 @@ ax[1].plot(gt_1[0:],'b',label='grnd_truth')
 
 
 # # ax[2].set_ylim(-0.6,0.6)
-ax[2].plot(t,gt_2,'b',label='grnd_truth')
 ax[2].plot(t,pred_2,'r',label='predictions')
+ax[2].plot(t,gt_2,'b',label='grnd_truth')
 
 
 
