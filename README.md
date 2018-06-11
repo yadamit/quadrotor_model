@@ -1,9 +1,6 @@
 ## Quadrotor Model
 This is the approximation of quadrotor model 'IRIS' using Neural Networks. 
 
-## Quadrotor Model
-This is the approximation of quadrotor model 'IRIS' using Neural Networks. 
-
 ### State Space
 The state space of the quadrotor is
 
