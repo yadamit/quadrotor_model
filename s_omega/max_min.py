@@ -3,10 +3,10 @@
 import os,fnmatch
 import numpy as np
 
-states = os.listdir("/data1/kranti/pratyush/generative/s_omega_2/data/nn2/")
-data_dir = "/data1/kranti/pratyush/generative/s_omega_2/data/nn2/"
+states = os.listdir("/data1/kranti/pratyush/quadrotor_model/data/nn2/")
+data_dir = "/data1/kranti/pratyush/quadrotor_model/data/nn2/"
 
-pattern = '*_grd_truth.npy'
+pattern = '*yaw*_grd_truth.npy'
 file_names = []
 
 for entry in states:

@@ -6,9 +6,9 @@ import math
 import matplotlib.pyplot as plt
 
 output_dir 		= "/data1/kranti/pratyush/quadrotor_model/s_omega/output_dir/"
-s_dir 			= "/data1/kranti/pratyush/quadrotor_model/data/states/"
-control_dir 	= "/data1/kranti/pratyush/quadrotor_model/data/controls/"
-alpha_dir 		= "/data1/kranti/pratyush/quadrotor_model/data/nn2/"
+s_dir 			= "/data1/kranti/pratyush/quadrotor_model/data_high_rates/states/"
+control_dir 	= "/data1/kranti/pratyush/quadrotor_model/data_high_rates/controls/"
+alpha_dir 		= "/data1/kranti/pratyush/quadrotor_model/data_high_rates/nn2/"
 
 
 s_yaw    = np.load(s_dir 		+ 's_yaw.npy')
