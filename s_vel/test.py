@@ -12,9 +12,9 @@ args = parser.parse_args()
 file_name = args.file_name
 
 output_dir 		= "/data1/kranti/pratyush/quadrotor_model/s_vel/output_dir/"
-state_dir	 	= "/data1/kranti/pratyush/quadrotor_model/data/states/"
-control_dir 	= "/data1/kranti/pratyush/quadrotor_model/data/controls/"
-alpha_dir 		= "/data1/kranti/pratyush/quadrotor_model/data/acc/"
+state_dir	 	= "/data1/kranti/pratyush/quadrotor_model/data_high_rates/states/"
+control_dir 	= "/data1/kranti/pratyush/quadrotor_model/data_high_rates/controls/"
+alpha_dir 		= "/data1/kranti/pratyush/quadrotor_model/data_high_rates/acc/"
 
 state   = np.load(state_dir 	+ 's_'+file_name+'.npy')
 control = np.load(control_dir   + 'u_'+file_name+'.npy')
